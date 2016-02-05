@@ -1,6 +1,8 @@
 
 //package jena.examples.rdf ;
 
+import org.apache.jena.ontology.OntDocumentManager;
+import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.vocabulary.*;
 //import org.apache.log4j.Logger;
@@ -18,6 +20,19 @@ public class Tutorial01 extends Object {
 
 
     public static void main (String args[]) {
+
+
+
+        OntModel m = ModelFactory.createOntologyModel();
+        OntDocumentManager dm = m.getDocumentManager();
+        dm.addAltEntry( "http://www.eswc2006.org/technologies/ontology",
+                "file:" + JENA + "src/examples/resources/eswc-2006-09-21.rdf" );
+        m.read( "http://www.eswc2006.org/technologies/ontology" );
+
+
+
+
+
         // create an empty model
         Model model = ModelFactory.createDefaultModel();
 
